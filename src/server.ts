@@ -1,10 +1,6 @@
 import "./open-telemetry";
 import { ApolloServer, gql } from "apollo-server-lambda";
-import {
-  collectorProcessor,
-  consoleProcessor,
-  provider,
-} from "./open-telemetry";
+import { consoleProcessor, provider } from "./open-telemetry";
 
 const typeDefs = gql`
   type Query {
@@ -49,10 +45,6 @@ export const handler = async (event: any, context: any, callback: any) => {
   console.log("forcing console processor flush");
   await consoleProcessor.forceFlush();
   console.log("finished console processor flush");
-
-  console.log("forcing collector processor flush");
-  await collectorProcessor.forceFlush();
-  console.log("finished collector processor flush");
 
   return response;
 };
