@@ -34,20 +34,7 @@ const server = new ApolloServer({
   introspection: true,
 });
 
-export const handler = async (event: any, context: any, callback: any) => {
-  const handler = server.createHandler();
-  const response = await handler(event, context, callback);
-
-  console.log("forcing provider flush");
-  await provider.forceFlush();
-  console.log("finished forcing provider flush");
-
-  console.log("forcing console processor flush");
-  await consoleProcessor.forceFlush();
-  console.log("finished console processor flush");
-
-  return response;
-};
+export const handler = server.createHandler();
 
 // Needed for esbuild NodejsFunction issue
 module.exports = { handler };

@@ -10,6 +10,7 @@ import {
 import { Resource } from "@opentelemetry/resources";
 import { GraphQLInstrumentation } from "@opentelemetry/instrumentation-graphql";
 import { CollectorTraceExporter } from "@opentelemetry/exporter-collector";
+import { AwsLambdaInstrumentation } from "@opentelemetry/instrumentation-aws-lambda";
 
 // Register server-related instrumentation
 registerInstrumentations({
@@ -17,6 +18,7 @@ registerInstrumentations({
     new HttpInstrumentation(),
     new ExpressInstrumentation() as any, // Gives type error without the "as any"
     new GraphQLInstrumentation(),
+    new AwsLambdaInstrumentation(),
   ],
 });
 
