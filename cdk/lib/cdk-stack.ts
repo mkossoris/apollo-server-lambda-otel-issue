@@ -18,12 +18,12 @@ export class CdkStack extends cdk.Stack {
       entry: "../src/server.ts",
       handler: "handler",
       memorySize: 1500,
-      environment: {
-        OTEL_LOG_LEVEL: "debug",
-        AWS_LAMBDA_EXEC_WRAPPER: "/opt/otel-handler",
-      },
 
-      // Uncomment to use Lambda Layer
+      // Uncomment to use AWS Distro for OTel Lambda Layer
+      // environment: {
+      //   OTEL_LOG_LEVEL: "debug",
+      //   AWS_LAMBDA_EXEC_WRAPPER: "/opt/otel-handler",
+      // },
       // layers: [oTelLambdaLayer],
       // tracing: lambda.Tracing.ACTIVE,
     });
